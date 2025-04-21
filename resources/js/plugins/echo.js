@@ -8,6 +8,12 @@ import Echo from 'laravel-echo';
 
 window.Pusher = require('pusher-js');
 
+console.log("KEYS", process.env.MIX_PUSHER_APP_KEY)
+console.log("CLUSTER", process.env.MIX_PUSHER_APP_CLUSTER);
+console.log("WS HOST", process.env.MIX_WEBSOCKETS_SERVER);
+console.log("WS HOST 2", process.env.MIX_PUSHER_HOST);
+console.log("WS PORT", process.env.MIX_PUSHER_PORT);
+
 export default function setupEcho() {
     window.Echo = new Echo({
         broadcaster: 'pusher',
