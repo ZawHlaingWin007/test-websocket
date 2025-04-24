@@ -10,8 +10,7 @@ window.Pusher = require('pusher-js');
 
 console.log("KEYS", process.env.MIX_PUSHER_APP_KEY)
 console.log("CLUSTER", process.env.MIX_PUSHER_APP_CLUSTER);
-console.log("WS HOST", process.env.MIX_WEBSOCKETS_SERVER);
-console.log("WS HOST 2", process.env.MIX_PUSHER_HOST);
+console.log("WS HOST", process.env.MIX_PUSHER_HOST);
 console.log("WS PORT", process.env.MIX_PUSHER_PORT);
 
 export default function setupEcho() {
@@ -19,10 +18,11 @@ export default function setupEcho() {
         broadcaster: 'pusher',
         key: process.env.MIX_PUSHER_APP_KEY,
         cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-        forceTLS: false,
+        forceTLS: process.env.MIX_PUSHER_SCHEME === 'https',
 
-        wsHost: process.env.MIX_WEBSOCKETS_SERVER,
+        wsHost: process.env.MIX_PUSHER_HOST,
         wsPort: process.env.MIX_PUSHER_PORT,
-        encrypted: false,
+        wssPort: 443,
+        enabledTransports: ['ws', 'wss'],
     });
 }

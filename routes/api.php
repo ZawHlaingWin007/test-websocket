@@ -2,6 +2,7 @@
 
 use App\Events\SendMessageEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('send', function () {
+    Log::debug('Config: ', config('broadcasting.connections.pusher'));
+    Log::debug('Config OPTIONS: ', config('broadcasting.connections.pusher.options'));
     broadcast(new SendMessageEvent())->toOthers();
     return response()->json([
         'message' => "SUCCESS",
