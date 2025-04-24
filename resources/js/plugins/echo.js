@@ -12,6 +12,7 @@ console.log("KEYS", process.env.MIX_PUSHER_APP_KEY)
 console.log("CLUSTER", process.env.MIX_PUSHER_APP_CLUSTER);
 console.log("WS HOST", process.env.MIX_PUSHER_HOST);
 console.log("WS PORT", process.env.MIX_PUSHER_PORT);
+console.log("WS SCHEME", process.env.MIX_PUSHER_SCHEME);
 
 export default function setupEcho() {
     window.Echo = new Echo({
